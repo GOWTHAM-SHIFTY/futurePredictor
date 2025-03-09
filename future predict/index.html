@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 shifty's Future Predictor 🔥</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(255, 0, 150, 0.4);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-family: cursive;
+            
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px;
+            font-size: 18px;
+            border: 2px solid #ff00ff;
+            border-radius: 8px;
+            background: #222;
+            color: #fff;
+            text-align: center;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #ff00ff, #ff7700);
+            color: #fff;
+            cursor:pointer;
+            transition: all 0.3s;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.8);
+        }
+
+        #result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s ease-in-out;
+        }
+
+        #result.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <h2>🔥 Future Predictor 🔥</h2>
+    <div class="container">
+        <p>Enter your name & birth month to see your destiny! 🚀</p>
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="number" id="month" placeholder="Birth Month (1-12)" min="1" max="12">
+        <button onclick="predictFuture()">Reveal My Future</button>
+        <p id="result"></p>
+    </div>
+    <audio id="soundEffect" src="https://www.fesliyanstudios.com/play-mp3/387"></audio>
+
+
+    <script>
+        function predictFuture() {
+            const name = document.getElementById("name").value.trim();
+            const month = document.getElementById("month").value;
+            const result = document.getElementById("result");
+            const soundEffect=document.getElementById("soundEffect");
+            
+            if (!name || month < 1 || month > 12) 
+            {
+                result.innerText = "Please enter a valid name and birth month!";
+                result.classList.add("show");
+                return;
+            }
+            soundEffect.play();
+            const fortunes = [
+                "You will become a billionaire! 💰💎",
+                "A mysterious adventure awaits! 🌍✈️",
+                "You will soon discover the true meaning of 'last minute preparation'! 📚⏳",
+                "Aliens will send you a secret message! 👽📡",
+                "You will become a viral sensation! 📸🎥",
+                "Your phone will forever be at 1% 🏆💰",
+                "Your dream job will come true! 💼✨",
+                "Your future home will be a castle! 🏰💎",
+                "The Wi-Fi will always be slow when you need",
+                "You will discover a new way to procrastinate today. Congratulations! 🕹️🕒",
+                "Your life will be a series of 'I’ll study tomorrow' moments. 📅🙈",
+                "You will soon master the art of pretending to understand what your professor is saying. 👩‍🏫🤔",
+                "A sudden craving for biryani will appear right before your most important exam. 🍚🔥",
+                "You will accidentally open a textbook... and instantly fall asleep. 📖😴",
+                "Your phone’s autocorrect will fail you while you text your _______________",
+                "Your study notes will be the perfect source of inspiration for doodles. ✏️🎨",
+                "You will soon discover that your best ideas come during the most wierdest moments! 💡✨",
+                "Your classmates will soon realize you’re the quiet genius in the group. 🤐💭",
+                "You will travel back in time! ⏳🕰️",
+                "You will get unlimited free food! 🍔🍕🌮",
+                "You will become a superhero! 🦸‍♂️⚡"
+            ];
+            
+
+            const prediction = fortunes[(month - 1) % fortunes.length];
+            result.innerText = `${name}, ${prediction}`;
+            result.classList.add("show");
+        }
+    </script>
+</body>
+</html>
